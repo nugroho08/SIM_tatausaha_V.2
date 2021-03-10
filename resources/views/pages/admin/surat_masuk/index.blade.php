@@ -61,58 +61,65 @@ Surat Masuk | SIM Tatausaha
     </div>
 </div>
 
-@include('pages.admin.surat_masuk.modalTambah')
+    @include('pages.admin.surat_masuk.modalTambah')
+    
+    @include('pages.admin.surat_masuk.modalEdit')
+    
+    <div class="row">
+        <div class="col-12">
+            <div class="card m-b-30">
+                <div class="card-body">
+                    <table id="datatable" class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Nomor Urut Surat</th>
+                                <th>Tanggal Surat</th>
+                                <th>Jenis Surat</th>
+                                <th>Nomor Surat</th>
+                                <th>Prihal</th>
+                                <th>Instansi</th>
+                                <th>File</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($suratmasuk as $data)
+                            <tr>
+                                <td>{{$data->id}}</td>
+                                <td>{{$data->tanggal_surat}}</td>
+                                <td>{{$data->jenis_surat}}</td>
+                                <td>{{$data->no_surat}}</td>
+                                <td>{{$data->prihal}}</td>
+                                <td>{{$data->instansi}}</td>
+                                <td>{{$data->file}}</td>
 
-<div class="row">
-    <div class="col-12">
-        <div class="card m-b-30">
-            <div class="card-body">
-                <table id="datatable" class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Nomor Urut Surat</th>
-                            <th>Tanggal Surat</th>
-                            <th>Jenis Surat</th>
-                            <th>Nomor Surat</th>
-                            <th>Prihal</th>
-                            <th>Instansi</th>
-                            <th>File</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($suratmasuk as $data)
-                        <tr>
-                            <td>{{$data->id}}</td>
-                            <td>{{$data->tanggal_surat}}</td>
-                            <td>{{$data->jenis_surat}}</td>
-                            <td>{{$data->no_surat}}</td>
-                            <td>{{$data->prihal}}</td>
-                            <td>{{$data->instansi}}</td>
-                            <td>{{$data->nama_file}}</td>
+                                <td>
+                                    <form action="{{ route('suratmasuk.destroy',$data->id) }}" method="POST">
+                                        
+                                        {{-- <a class="btn btn-primary" href="{{ route('brands.edit',$brand->id) }}">
+                                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                                            </svg>
+                                        </a> --}}
+                    
+                                        @csrf
+                                        @method('DELETE')
+                        
+                                        <button type="submit" class="btn btn-danger" onClick="return confirm('Anda yakin ingin menghapus data ini?')"><i class="mdi mdi-delete"></i>
+                                            Hapus
+                                        </button>
+                                        <button type="button" class="btn btn-success" data-toggle="modal" onClick="getdata({{$data->id}})"  data-target="#editModal"><i class="mdi mdi-pen"></i> 
+                                        Edit Data
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                            @endforeach
 
-                            <td>
-                                <form action="{{ route('suratmasuk.destroy',$data->id) }}" method="POST">
+                        </tbody>
+                    </table>
+                </div>
 
-                                    {{-- <a class="btn btn-primary" href="{{ route('brands.edit',$brand->id) }}">
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
-                                    </svg>
-                                    </a> --}}
-
-                                    @csrf
-                                    @method('DELETE')
-
-                                    <button type="submit" class="btn btn-danger" onClick="return confirm('Anda yakin ingin menghapus data ini?')">
-                                        Hapus
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                        @endforeach
-
-                    </tbody>
-                </table>
             </div>
         </div>
     </div>
