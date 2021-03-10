@@ -23,7 +23,7 @@ class SuratKeluarController extends Controller
             'tujuan' => 'required',
             'pengantar' => 'required',
         ]);
-        $a = $request->file('file_pendukung')->move('surat keluar', $request->file('file_pendukung')->getClientOriginalName());
+        $a = $request->file('file')->move('surat keluar', $request->file('file')->getClientOriginalName());
         SuratKeluar::create($request->all());
 
         return redirect()->route('suratkeluar.index');

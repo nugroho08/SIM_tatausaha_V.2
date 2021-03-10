@@ -1,17 +1,17 @@
 @extends('layouts.app')
 
 @section('title')
-    Surat Masuk | SIM Tatausaha
+Surat Masuk | SIM Tatausaha
 @endsection
 
 @section('css')
-    <link href="assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
-    
-    <link href="assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+<link href="assets/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+<link href="assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 
-    <link href="assets/plugins/dropzone/dist/dropzone.css" rel="stylesheet" type="text/css">
-    <link href="assets/plugins/dropify/css/dropify.min.css" rel="stylesheet">
+<link href="assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+<link href="assets/plugins/dropzone/dist/dropzone.css" rel="stylesheet" type="text/css">
+<link href="assets/plugins/dropify/css/dropify.min.css" rel="stylesheet">
 @endsection
 
 @section('nav-bar')
@@ -41,27 +41,30 @@
 @endsection
 
 @section('containt')
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="page-title-box">
-                <div class="btn-group pull-right">
-                    <ol class="breadcrumb hide-phone p-0 m-0">
-                        <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="#">Surat Masuk</a></li>
-                        <li class="breadcrumb-item active">Data Surat Masuk</li>
-                    </ol>
-                </div>
-                <h4 class="page-title">Surat Masuk</h4>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-title-box">
+            <div class="btn-group pull-right">
+                <ol class="breadcrumb hide-phone p-0 m-0">
+                    <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="#">Surat Masuk</a></li>
+                    <li class="breadcrumb-item active">Data Surat Masuk</li>
+                </ol>
             </div>
+            <h4 class="page-title">Surat Masuk</h4>
         </div>
     </div>
-    <div class="row">
-        <div class="col-12 m-b-20">
-            <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#exampleModal"><i class="mdi mdi-plus"></i> Tambah Data</button>
-        </div>
+</div>
+<div class="row">
+    <div class="col-12 m-b-20">
+        <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#exampleModal"><i class="mdi mdi-plus"></i> Tambah Data</button>
     </div>
+</div>
 
     @include('pages.admin.surat_masuk.modalTambah')
+    @include('pages.admin.surat_masuk.modalEdit')
+    
+    @include('pages.admin.surat_masuk.modalEdit')
     
     <div class="row">
         <div class="col-12">
@@ -103,8 +106,11 @@
                                         @csrf
                                         @method('DELETE')
                         
-                                        <button type="submit" class="btn btn-danger" onClick="return confirm('Anda yakin ingin menghapus data ini?')">
+                                        <button type="submit" class="btn btn-danger" onClick="return confirm('Anda yakin ingin menghapus data ini?')"><i class="mdi mdi-delete"></i>
                                             Hapus
+                                        </button>
+                                        <button type="button" class="btn btn-success" data-toggle="modal" onClick="getdata({{$data->id}})"  data-target="#editModal"><i class="mdi mdi-pen"></i> 
+                                        Edit Data
                                         </button>
                                     </form>
                                 </td>
@@ -114,70 +120,72 @@
                         </tbody>
                     </table>
                 </div>
+
             </div>
         </div>
     </div>
 </div>
+</div>
 @endsection
 
 @section('js')
-    <script src="assets/plugins/datatables/dataTables.responsive.min.js"></script>
-    <script src="assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
+<script src="assets/plugins/datatables/dataTables.responsive.min.js"></script>
+<script src="assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
 
-    <script src="assets/pages/datatables.init.js"></script>
+<script src="assets/pages/datatables.init.js"></script>
 
-    <script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
 
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#datatable2').DataTable();  
-        } );
-    </script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#datatable2').DataTable();
+    });
+</script>
 
-    <script src="assets/plugins/dropzone/dist/dropzone.js"></script>
-    <script src="assets/plugins/dropify/js/dropify.min.js"></script> 
+<script src="assets/plugins/dropzone/dist/dropzone.js"></script>
+<script src="assets/plugins/dropify/js/dropify.min.js"></script>
 
-    <script>
-        $(document).ready(function(){
-            // Basic
-            $('.dropify').dropify();
+<script>
+    $(document).ready(function() {
+        // Basic
+        $('.dropify').dropify();
 
-            // Translated
-            $('.dropify-fr').dropify({
-                messages: {
-                    default: 'Glissez-déposez un fichier ici ou cliquez',
-                    replace: 'Glissez-déposez un fichier ou cliquez pour remplacer',
-                    remove:  'Supprimer',
-                    error:   'Désolé, le fichier trop volumineux'
-                }
-            });
-
-            // Used events
-            var drEvent = $('#input-file-events').dropify();
-
-            drEvent.on('dropify.beforeClear', function(event, element){
-                return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
-            });
-
-            drEvent.on('dropify.afterClear', function(event, element){
-                alert('File deleted');
-            });
-
-            drEvent.on('dropify.errors', function(event, element){
-                console.log('Has Errors');
-            });
-
-            var drDestroy = $('#input-file-to-destroy').dropify();
-            drDestroy = drDestroy.data('dropify')
-            $('#toggleDropify').on('click', function(e){
-                e.preventDefault();
-                if (drDestroy.isDropified()) {
-                    drDestroy.destroy();
-                } else {
-                    drDestroy.init();
-                }
-            })
+        // Translated
+        $('.dropify-fr').dropify({
+            messages: {
+                default: 'Glissez-déposez un fichier ici ou cliquez',
+                replace: 'Glissez-déposez un fichier ou cliquez pour remplacer',
+                remove: 'Supprimer',
+                error: 'Désolé, le fichier trop volumineux'
+            }
         });
-    </script>
+
+        // Used events
+        var drEvent = $('#input-file-events').dropify();
+
+        drEvent.on('dropify.beforeClear', function(event, element) {
+            return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+        });
+
+        drEvent.on('dropify.afterClear', function(event, element) {
+            alert('File deleted');
+        });
+
+        drEvent.on('dropify.errors', function(event, element) {
+            console.log('Has Errors');
+        });
+
+        var drDestroy = $('#input-file-to-destroy').dropify();
+        drDestroy = drDestroy.data('dropify')
+        $('#toggleDropify').on('click', function(e) {
+            e.preventDefault();
+            if (drDestroy.isDropified()) {
+                drDestroy.destroy();
+            } else {
+                drDestroy.init();
+            }
+        })
+    });
+</script>
 @endsection

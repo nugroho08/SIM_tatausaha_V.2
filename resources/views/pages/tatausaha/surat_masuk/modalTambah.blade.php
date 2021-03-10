@@ -8,9 +8,8 @@
                 </button>
           </div>
             <div class="modal-body">
-                <form>
-                    {{csrf_field()}}
-                    
+            <form action="{{ route('suratkeluar.store') }}" method="POST">
+                    @csrf
                     <div class="form-group">
                         <label for="surat_masuk">Tanggal Surat</label>
                         <input name="tanggal_surat" type="date" class="form-control w-100 p-3" id="surat_masuk" aria-describedby="surat_masuk" placeholder="Tanggal Surat" >

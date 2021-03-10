@@ -83,7 +83,7 @@
                 <div class="form-group row">
                     <label for="name" class="col-sm-2 col-form-label">Nama</label>
                     <div class="col-sm-10">
-                        <input name="name" class="form-control" type="text" placeholder="Masukan nama">
+                        <input name="nama" class="form-control" type="text" placeholder="Masukan nama">
                     </div>
                 </div>
 
@@ -126,7 +126,7 @@
                     </div>
                 </div>
 
-                <div class="form-group row">
+                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Agama</label>
                     <div class="col-sm-10">
                         <select class="form-control" name="agama">
@@ -220,7 +220,7 @@
                     </div>
                 </div>
 
-                <div class="form-group row">
+                 <div class="form-group row">
                     <label for="nik_ibu" class="col-sm-2 col-form-label">NIK Ibu</label>
                     <div class="col-sm-10">
                         <input name="nik_ibu" class="form-control" type="number" placeholder="Masukan nik ibu">
@@ -260,19 +260,19 @@
                     <div class="col-sm-10">
                         <select class="form-control" name="status_anak">
                             <option>Pilih</option>
-                            <option>Kandung</option>
-                            <option>Angkat</option>
+                            <option value="kandung">Kandung</option>
+                            <option value="angkat">Angkat</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="form-group row">
-                    <label for="file_pendukung" class="col-sm-2 col-form-label">File Pendukung</label>
+                    <label for="file" class="col-sm-2 col-form-label">File Pendukung</label>
                     <div class="col-sm-10">
-                        <input name="file_pendukung" type="file" id="input-file-now" class="dropify" />
+                        <input name="file" type="file" id="input-file-now" class="dropify" />
                         <small>Masukan file dalam bentuk .zip/.rar</small>                                                 
                     </div>
-                </div>
+                </div> 
 
             </div>
 

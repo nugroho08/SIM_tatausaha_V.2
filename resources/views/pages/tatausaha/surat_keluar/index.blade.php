@@ -9,6 +9,9 @@
     <link href="assets/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
     
     <link href="assets/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="assets/plugins/dropzone/dist/dropzone.css" rel="stylesheet" type="text/css">
+    <link href="assets/plugins/dropify/css/dropify.min.css" rel="stylesheet">
 @endsection
 
 @section('nav-bar')
@@ -60,6 +63,7 @@
     </div>
 
     @include('pages.admin.surat_keluar.modalTambah')
+    @include('pages.tatausaha.surat_keluar.modalEdit')
     
     <div class="row">
             <div class="col-12">
@@ -104,6 +108,7 @@
                                             <button type="submit" class="btn btn-danger" onClick="return confirm('Anda yakin ingin menghapus data ini?')">
                                                 Hapus
                                             </button>
+                                            <button type="button" class="btn btn-success" data-toggle="modal" onClick="getdata({{$data->id}})"  data-target="#editModal"><i class="mdi mdi-pen"></i> Edit Data</button>
                                         </form>
                                     </td>
                                 </tr>
@@ -131,4 +136,55 @@
             $('#datatable2').DataTable();  
         } );
     </script>
+    
+   
+    <script src="assets/plugins/dropzone/dist/dropzone.js"></script>
+    <script src="assets/plugins/dropify/js/dropify.min.js"></script> 
+
+    <script>
+        $(document).ready(function(){
+            // Basic
+            $('.dropify').dropify();
+
+            // Translated
+            $('.dropify-fr').dropify({
+                messages: {
+                    default: 'Glissez-déposez un fichier ici ou cliquez',
+                    replace: 'Glissez-déposez un fichier ou cliquez pour remplacer',
+                    remove:  'Supprimer',
+                    error:   'Désolé, le fichier trop volumineux'
+                }
+            });
+
+            // Used events
+            var drEvent = $('#input-file-events').dropify();
+
+            drEvent.on('dropify.beforeClear', function(event, element){
+                return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+            });
+
+            drEvent.on('dropify.afterClear', function(event, element){
+                alert('File deleted');
+            });
+
+            drEvent.on('dropify.errors', function(event, element){
+                console.log('Has Errors');
+            });
+
+            var drDestroy = $('#input-file-to-destroy').dropify();
+            drDestroy = drDestroy.data('dropify')
+            $('#toggleDropify').on('click', function(e){
+                e.preventDefault();
+                if (drDestroy.isDropified()) {
+                    drDestroy.destroy();
+                } else {
+                    drDestroy.init();
+                }
+            })
+        });
+    </script>
+
 @endsection
+
+
+   

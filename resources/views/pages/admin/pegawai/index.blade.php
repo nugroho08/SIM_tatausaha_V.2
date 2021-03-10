@@ -117,7 +117,7 @@
                                         @csrf
                                         @method('DELETE')
                         
-                                        <button type="submit" class="btn btn-danger" onClick="return confirm('Anda yakin ingin menghapus data ini?')">
+                                        <button type="submit" class="btn btn-danger" onClick="return confirm('Anda yakin ingin menghapus data ini?')"><i class="mdi mdi-delete"></i>
                                             Hapus
                                         </button>
                                         <button type="button" class="btn btn-success" data-toggle="modal" onClick="getdata({{$data->id}})"  data-target="#editModal"><i class="mdi mdi-pen"></i> Edit</button>
