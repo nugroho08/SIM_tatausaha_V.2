@@ -63,6 +63,8 @@
 
     @include('pages.admin.surat_masuk.modalTambah')
     
+    @include('pages.admin.surat_masuk.modalEdit')
+    
     <div class="row">
         <div class="col-12">
             <div class="card m-b-30">
@@ -103,8 +105,11 @@
                                         @csrf
                                         @method('DELETE')
                         
-                                        <button type="submit" class="btn btn-danger" onClick="return confirm('Anda yakin ingin menghapus data ini?')">
+                                        <button type="submit" class="btn btn-danger" onClick="return confirm('Anda yakin ingin menghapus data ini?')"><i class="mdi mdi-delete"></i>
                                             Hapus
+                                        </button>
+                                        <button type="button" class="btn btn-success" data-toggle="modal" onClick="getdata({{$data->id}})"  data-target="#editModal"><i class="mdi mdi-pen"></i> 
+                                        Edit Data
                                         </button>
                                     </form>
                                 </td>

@@ -60,7 +60,8 @@
                         <div class="col-sm-10">
                         <input name="file_pendukung" type="file" id="input-file-now" class="dropify" />
                         <small>Masukan file dalam bentuk .zip/.rar</small>                                                 
-                    </div>
+                        </div>
+                        </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
