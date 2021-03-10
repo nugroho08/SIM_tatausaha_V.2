@@ -51,6 +51,7 @@
             <div class="col-12">
                 <div class="card m-b-30">
                     <div class="card-body">
+                        <a href='/kepseksuratkeluar/export_excel' class="btn btn-success my-3" target="_blank">EXPORT EXCEL</a>                      
                         <table id="datatable" class="table table-bordered">
                             <thead>
                                 <tr>

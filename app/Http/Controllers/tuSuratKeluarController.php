@@ -14,7 +14,7 @@ class tuSuratKeluarController extends Controller
     }
     
     public function store(Request $request){
-
+       
         $request->validate([
             'tanggal_surat' => 'required',
             'jenis_surat' => 'required',

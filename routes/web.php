@@ -14,7 +14,7 @@ use App\Http\Controllers\tuSuratKeluarController;
 use App\Http\Controllers\uangController;
 
 use App\Http\Controllers\kepsekSuratMasukController;
-use App\Http\Controllers\kepsekSuratKeluarController;
+use App\Http\Controllers\KepsekSuratKeluarController;
 
 
 /*
@@ -58,4 +58,7 @@ Route::group(['role'=>'tatausaha'],function(){
 Route::group(['role'=>'kepsek'],function(){
     Route::resource('/kepseksuratkeluar', kepsekSuratKeluarController::class);
     Route::resource('/kepseksuratmasuk', kepsekSuratMasukController::class);
+
+    Route::get('/kepseksuratkeluar/export_excel', [KepsekSuratKeluarController::class, 'export_excel']);
+    route::get('/kepseksuratmasuk/export_excel',[kepsekSuratMasukController::class, 'export_excel']);
 });

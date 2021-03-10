@@ -57,7 +57,7 @@
         </div>
     </div>
 
-    @include('pages.admin.surat_masuk.modalTambah')
+    @include('pages.tatausaha.surat_masuk.modalTambah')
     
     <div class="row">
             <div class="col-12">
