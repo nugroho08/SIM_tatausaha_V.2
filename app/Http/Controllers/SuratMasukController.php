@@ -13,7 +13,8 @@ class SuratMasukController extends Controller
         return view('pages.admin.surat_masuk.index', compact('suratmasuk'));
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
 
         $request->validate([
             'tanggal_surat' => 'required',
@@ -24,7 +25,14 @@ class SuratMasukController extends Controller
         ]);
         $a = $request->file('file_pendukung')->move('Surat Masuk', $request->file('file_pendukung')->getClientOriginalName());
 
-        SuratMasuk::create($request->all());
+        SuratMasuk::create([
+            'tanggal_surat' => $request->tanggal_surat,
+            'jenis_surat' => $request->jenis_surat,
+            'no_surat' => $request->no_surat,
+            'prihal' => $request->prihal,
+            'instansi' => $request->instansi,
+            'nama_file' => $request->file('file_pendukung')->getClientOriginalName()
+        ]);
 
         return redirect()->route('suratmasuk.index');
     }
@@ -32,8 +40,8 @@ class SuratMasukController extends Controller
     public function destroy(SuratMasuk $suratmasuk)
     {
         $suratmasuk->delete();
-    
+
         return redirect()->route('suratmasuk.index')
-                        ->with('success','Merek deleted successfully');
+            ->with('success', 'Merek deleted successfully');
     }
 }
