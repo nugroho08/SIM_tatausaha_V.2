@@ -62,6 +62,7 @@ Surat Masuk | SIM Tatausaha
 </div>
 
     @include('pages.admin.surat_masuk.modalTambah')
+    @include('pages.admin.surat_masuk.modalEdit')
     
     @include('pages.admin.surat_masuk.modalEdit')
     

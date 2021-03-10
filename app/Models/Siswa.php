@@ -9,7 +9,7 @@ class Siswa extends Model
 {
     use HasFactory;
 
-    protected $table = "students";
+    protected $table = "siswas";
 
     protected $primaryKey = "id";
 
@@ -17,7 +17,7 @@ class Siswa extends Model
         'nisn',
         'nis',
         'nik',
-        'name',
+        'nama',  
         'jk',
         'angkatan',
         'rayon',
@@ -32,8 +32,8 @@ class Siswa extends Model
         'no_hp_siswa',
         'no_kk',
         'nik_ayah',
-        'nama_Ayah',
-        'pekerjaan_Ayah',
+        'nama_ayah',
+        'pekerjaan_ayah',
         'no_hp_ayah',
         'nik_ibu',
         'nama_ibu',
@@ -41,6 +41,6 @@ class Siswa extends Model
         'no_hp_ibu',
         'anak_ke',
         'status_anak',
-        'nama_file',    
+        'file'
     ];
 }

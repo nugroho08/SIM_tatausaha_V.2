@@ -35,9 +35,9 @@
                         <input name="pengantar" type="text" class="form-control w-100 p-3" placeholder="Pengantar" >
                     </div>
                     <div class="form-group ">
-                    <label for="file_pendukung" class="col-sm-2 col-form-label">File Pendukung</label>
+                    <label for="file" class="col-sm-2 col-form-label">File Pendukung</label>
                     <div class="col-sm-10">
-                        <input name="file_pendukung" type="file" id="input-file-now" class="dropify" />
+                        <input name="file" type="file" id="input-file-now" class="dropify" />
                         <small>Masukan file dalam bentuk .zip/.rar</small>                                                 
                     </div>
                 </div>
