@@ -19,12 +19,12 @@
                         <input name="tanggal_surat" type="text" class="form-control w-100 p-3" id="surat_masuk" aria-describedby="surat_masuk" placeholder="Tanggal Surat" >
                     </div>
                     <div class="form-group">
-                        <label for="surat_masuk">KOP Surat</label>
-                        <input name="nomor_surat" type="text" class="form-control w-100 p-3" id="surat_masuk" aria-describedby="surat_masuk" placeholder="Nomor Surat" >
-                    </div>   
+                        <label for="surat_masuk">No Surat</label>
+                        <input name="no_surat" type="text" class="form-control w-100 p-3" id="surat_masuk" aria-describedby="surat_masuk" placeholder="No Suratt" >
+                    </div>  
                     <div class="form-group">
-                        <label for="surat_masuk">Parihal</label>
-                        <input name="perihal" type="text" class="form-control w-100 p-3" id="surat_masuk" aria-describedby="surat_masuk" placeholder="Perihal" >
+                        <label for="surat_masuk">Perihal</label>
+                        <input name="prihal" type="text" class="form-control w-100 p-3" id="surat_masuk" aria-describedby="surat_masuk" placeholder="Perihal" >
                     </div>   
                     <div class="form-group">
                         <label for="surat_masuk">Instansi</label>
