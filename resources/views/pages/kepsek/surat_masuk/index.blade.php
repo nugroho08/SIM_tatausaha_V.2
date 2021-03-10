@@ -52,6 +52,7 @@
             <div class="card m-b-30">
                 <div class="card-body">
                     <table id="datatable" class="table table-bordered">
+                        <a href="/kepseksuratmasuk/export_excel" class="btn btn-success my-3" target="_blank">EXPORT EXCEL</a>
                         <thead>
                             <tr>
                                 <th>Nomor Urut Surat</th>

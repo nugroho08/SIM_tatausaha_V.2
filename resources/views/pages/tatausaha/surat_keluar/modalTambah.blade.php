@@ -23,7 +23,7 @@
                         <input name="no_surat" type="text" class="form-control w-100 p-3" placeholder="Nomor Surat" >
                     </div>  
                     <div class="form-group">
-                        <label for="prihal">Prihal</label>
+                        <label for="prihal">Perihal</label>
                         <input name="prihal" type="text" class="form-control w-100 p-3" placeholder="Perihal" >
                     </div>  
                     <div class="form-group">

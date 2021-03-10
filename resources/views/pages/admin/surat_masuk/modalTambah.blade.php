@@ -19,11 +19,12 @@
                         <input name="jenis_surat" type="text" class="form-control w-100 p-3" placeholder="Tanggal Surat" >
                     </div>
                     <div class="form-group">
-                        <label for="no_surat">KOP Surat</label>
+                        <label for="no_surat">No Surat</label>
                         <input name="no_surat" type="text" class="form-control w-100 p-3" placeholder="Nomor Surat" >
                     </div>   
                     <div class="form-group">
-                        <label for="prihal">Prihal</label>
+
+                        <label for="perihal">Perihal</label>
                         <input name="prihal" type="text" class="form-control w-100 p-3" placeholder="Prihal" >
                     </div>   
                     <div class="form-group">
