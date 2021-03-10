@@ -62,6 +62,7 @@
     </div>
 
     @include('pages.admin.surat_masuk.modalTambah')
+    @include('pages.admin.surat_masuk.modalEdit')
     
     <div class="row">
         <div class="col-12">
@@ -106,6 +107,8 @@
                                         <button type="submit" class="btn btn-danger" onClick="return confirm('Anda yakin ingin menghapus data ini?')">
                                             Hapus
                                         </button>
+                                        <button type="button" class="btn btn-success" data-toggle="modal" onClick="getdata({{$data->id}})"  data-target="#editModal"><i class="mdi mdi-pen"></i> Edit Data</button>
+
                                     </form>
                                 </td>
                             </tr>

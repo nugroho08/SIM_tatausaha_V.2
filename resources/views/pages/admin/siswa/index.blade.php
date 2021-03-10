@@ -66,19 +66,30 @@
                 <table id="datatable" class="table table-bordered">
                     <thead>
                         <tr>
+                            <th>NISN</th>
                             <th>NIS</th>
-                            <th>Nama Siswa</th>
+                            <th>NIK</th>
+                            <th>NAMA</th>
+                            <th>JK</th>
+                            <th>Angakatan</th>
                             <th>Rayon</th>
-                            <th>Angkatan</th>
+                            <th>Tempat Lahir</th>
+                            <th>Tanggal Lahir</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($students as $data)
                         <tr>
+                            <td>{{$data->nisn}}</td>
                             <td>{{$data->nis}}</td>
-                            <td>{{$data->name}}</td>
-                            <td>{{$data->rayon}}</td>
+                            <td>{{$data->nik}}</td>
+                            <td>{{$data->nama}}</td>
+                            <td>{{$data->jk}}</td>
                             <td>{{$data->angkatan}}</td>
+                            <td>{{$data->rayon}}</td>
+                            <td>{{$data->tempat_lahir}}</td>
+                            <td>{{$data->tanggal_lahir}}</td>
                         </tr>
                         @endforeach
 
