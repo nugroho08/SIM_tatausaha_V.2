@@ -41,6 +41,6 @@ class Siswa extends Model
         'no_hp_ibu',
         'anak_ke',
         'status_anak',
-        'file'
+        'file',
     ];
 }
